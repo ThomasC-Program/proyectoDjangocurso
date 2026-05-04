@@ -1,0 +1,14 @@
+<h1> Lista de habilidades </h1>
+<form method="GET"> 
+    <input type="text" id="kword" name='kword' placeholder="Ingresar habilidad">
+    <button type="submit">Buscar</button>
+</form>
+<ul>
+    <li>
+    {% for h in habilidades %}
+        <li> {{ h }} </li>
+    {% endfor %}
+    </li>
+</ul>
+
+
