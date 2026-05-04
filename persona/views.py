@@ -5,7 +5,7 @@ from django.views.generic import(
 )
 # Create your views here.
 from .models import Empleado
-
+# Cambios ramaOne 
 class ListAllEmpleados(ListView):
     template_name = 'persona/list_all.html'
     paginate_by = 2
