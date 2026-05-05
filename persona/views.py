@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import(
-    ListView,
+    ListView, #Importando vistas genéricas
     DetailView,
 )
+# Toda vista basada en clases necesita un template para poder funcionar
 # Create your views here.
 from .models import Empleado
 
@@ -58,5 +59,6 @@ class ListHabilidadesEmpleado(ListView):
         return empleado.habilidades.all()
 
 class EmpleadoDetailView(DetailView):
+    """ Vista para mostrar el detalle de un empleado"""
     model = Empleado
     template_name = "persona/detail_empleado.html"

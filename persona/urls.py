@@ -10,4 +10,5 @@ urlpatterns = [
     path('buscar-empleado/', views.ListEmpleadosByKword.as_view()),
     path('lista-habilidades-empleado/', views.ListHabilidadesEmpleado.as_view()),
     path('ver-empleado/<pk>/', views.ListHabilidadesEmpleado.as_view()),
+    
 ]
