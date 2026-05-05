@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #Aplicacion de terceros instalado con pip install django-ckeditor
-    'ckeditor',
+    'django_ckeditor_5',
     #Installed APPS 
     'empleado',
     'departamento',
@@ -109,6 +109,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CKEDITOR_5_CONFIGS = {
+    'extends': {
+        'blockToolbar': [
+            'paragraph', 'heading1', 'heading2', 'inline_divider', 'numberedList', 'bulletedList'
+        ],
+        'toolbar': ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'insertTable',],
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/

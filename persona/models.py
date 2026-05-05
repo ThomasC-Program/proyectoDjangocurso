@@ -1,7 +1,7 @@
 from django.db import models
 from departamento.models import Departamento
 
-from ckeditor.fields import RichTextField
+from django_ckeditor_5.fields import CKEditor5Field
 
 #Para hacer las claves de valor para relacionar tablas se importa la tabla 
 # Create your models here.
@@ -45,7 +45,8 @@ class Empleado(models.Model):
     habilidades = models.ManyToManyField(Habilidades) #Funcion de muchos a muchos
     #Un empleado puede tener varia habilidades
     #Varias habilidades pueden pertenecer a varios empleados
-    hoja_vida = RichTextField()
+    hoja_vida = CKEditor5Field('Hoja de Vida', config_name='extends') 
+
     
     #class Meta va especificando el orden y tratamiento de los datos
     class Meta:
