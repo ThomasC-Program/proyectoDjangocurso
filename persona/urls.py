@@ -13,9 +13,16 @@ urlpatterns = [
     path('lista-habilidades-empleado/', views.ListHabilidadesEmpleado.as_view()),
     path('ver-empleado/<pk>/', views.ListHabilidadesEmpleado.as_view()),
     path('add-empleado/', views.EmpleadoCreateView.as_view()),
-    path('success/', 
-    views.SuccessView.as_view(),
-    name='correcto'
+    path(
+        'success/', 
+        views.SuccessView.as_view(),
+        name='correcto'
     ),
+    path(
+        'update-empleado/<pk>/',
+        views.EmpleadoUpdateView.as_view(),
+        name='modificar_empleado'
+
+    )
     
 ]

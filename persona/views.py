@@ -5,6 +5,7 @@ from django.views.generic import(
     DetailView,
     CreateView,
     TemplateView,
+    UpdateView,
 )
 # Toda vista basada en clases necesita un template para poder funcionar
 # Create your views here.
@@ -78,9 +79,37 @@ class SuccessView(TemplateView): # Template View solo se usa para llamar a un Te
 class EmpleadoCreateView(CreateView):
     model = Empleado
     template_name = "persona/add.html"
-    fields = ('__all__')
-    #fields = ['first_name','last_name', 'job'] #Muestra cajas de texto para todos los campos del modelo
+    #fields = ('__all__') # Muestra todos los campos del modelo
+    fields = [
+        'first_name',
+        'last_name', 
+        'job', 
+        'departamento', 
+        'habilidades', 
+        ] #Muestra cajas de texto para todos los campos del modelo
     success_url = reverse_lazy('persona_app:correcto')
     # Con '.' se le indica a donde debe redirigir al usuario cuando se registra algo
     # Cuando se le pone '.' significa que es al mismo lugar sino colocar '/lista-todo-empleados/'
     #success_url = '.' 
+    # Para mejores practicas se usa reverse_lazy como paquete de Django el cual 
+    # Redirige al usuario a una URL que debe ser especificada tambien en urls.py del proyecto
+
+    def form_valid(self, form):
+        #Interceptar cuando pase algo antes del guardado 
+        #En este caso nombre completos
+        empleado = form.save(commit=False)
+        empleado.full_name = empleado.first_name + ' ' + empleado.last_name
+        empleado.save()
+        return super(EmpleadoCreateView, self).form_valid(form)
+
+class EmpleadoUpdateView(UpdateView):
+    template_name = "persona/update.html"
+    model = Empleado
+    fields = [
+        'first_name',
+        'last_name',
+        'job',
+        'departamento',
+        'habilidades',
+    ]
+    success_url = reverse_lazy('persona_app:correcto')
