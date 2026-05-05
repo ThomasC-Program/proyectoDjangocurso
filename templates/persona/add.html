@@ -1,0 +1,8 @@
+<h1>Registrar persona</h1>
+
+<!-- Con form se muestra el formulario donde va el texto que difinimo en CreateView -->
+<!-- y con as_p se muestra en parrafos o hacia abajo -->
+<form method="POST">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Agregar</button>
+</form>

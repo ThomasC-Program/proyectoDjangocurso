@@ -1,7 +1,10 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy # Para redirigir al usuario con mejores practicas paquete de Django
 from django.views.generic import(
     ListView, #Importando vistas genéricas
     DetailView,
+    CreateView,
+    TemplateView,
 )
 # Toda vista basada en clases necesita un template para poder funcionar
 # Create your views here.
@@ -62,3 +65,22 @@ class EmpleadoDetailView(DetailView):
     """ Vista para mostrar el detalle de un empleado"""
     model = Empleado
     template_name = "persona/detail_empleado.html"
+
+    def get_context_data(self, **kwargs): #Se define el contexto de la vista
+        context = super(EmpleadoDetailView, self).get_context_data(**kwargs) 
+        context['titulo'] = 'Empleado del mes'
+        return context
+
+class SuccessView(TemplateView): # Template View solo se usa para llamar a un Template Html
+    template_name = "persona/success.html"
+
+
+class EmpleadoCreateView(CreateView):
+    model = Empleado
+    template_name = "persona/add.html"
+    fields = ('__all__')
+    #fields = ['first_name','last_name', 'job'] #Muestra cajas de texto para todos los campos del modelo
+    success_url = reverse_lazy('persona_app:correcto')
+    # Con '.' se le indica a donde debe redirigir al usuario cuando se registra algo
+    # Cuando se le pone '.' significa que es al mismo lugar sino colocar '/lista-todo-empleados/'
+    #success_url = '.' 
