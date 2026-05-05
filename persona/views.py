@@ -6,6 +6,7 @@ from django.views.generic import(
     CreateView,
     TemplateView,
     UpdateView,
+    DeleteView,
 )
 # Toda vista basada en clases necesita un template para poder funcionar
 # Create your views here.
@@ -113,3 +114,19 @@ class EmpleadoUpdateView(UpdateView):
         'habilidades',
     ]
     success_url = reverse_lazy('persona_app:correcto')
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        return super().post(request, *args, **kwargs)
+    
+    def form_valid(self, form):
+        #Interceptar cuando pase algo antes del guardado 
+        #En este caso nombre completos
+        
+        return super(EmpleadoUpdateView, self).form_valid(form)
+
+class EmpleadoDeleteView(DeleteView):
+    model = Empleado
+    template_name = "persona/delete.html"
+    success_url = reverse_lazy('persona_app:correcto')
+    
