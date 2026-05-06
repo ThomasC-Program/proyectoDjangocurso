@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'departamento',
     'home',
     'persona',
+    'pruebas',
 ]
 
 MIDDLEWARE = [
