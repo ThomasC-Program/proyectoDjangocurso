@@ -19,6 +19,7 @@ class InicioView(TemplateView):
 class ListAllEmpleados(ListView):
     template_name = 'persona/list_all.html'
     paginate_by = 2
+    ordering = 'first_name'
     model = Empleado 
 
 class ListByAreaEmpleado(ListView):
