@@ -33,7 +33,7 @@ class ListAllEmpleados(ListView):
 class ListByAreaEmpleado(ListView):
     """ lista empleados de un area """
     template_name = 'persona/list_by_area.html'
-    
+    context_object_name = 'empleados'
     
     def get_queryset(self):
         area = self.kwargs['shorname']
