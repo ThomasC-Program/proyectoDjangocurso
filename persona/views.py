@@ -18,7 +18,7 @@ class InicioView(TemplateView):
 
 class ListAllEmpleados(ListView):
     template_name = 'persona/list_all.html'
-    paginate_by = 2
+    paginate_by = 4
     ordering = 'first_name'     
     
     def get_queryset(self):
