@@ -30,6 +30,14 @@ class ListAllEmpleados(ListView):
         
         return lista
 
+
+class ListaEmpleadosAdmin(ListView):
+    template_name = 'persona/lista_empleados.html'
+    paginate_by = 10
+    context_object_name = 'empleados'   
+    model = Empleado
+
+
 class ListByAreaEmpleado(ListView):
     """ lista empleados de un area """
     template_name = 'persona/list_by_area.html'
@@ -126,7 +134,7 @@ class EmpleadoUpdateView(UpdateView):
         'departamento',
         'habilidades',
     ]
-    success_url = reverse_lazy('persona_app:correcto')
+    success_url = reverse_lazy('persona_app:empleados_admin')
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -141,5 +149,5 @@ class EmpleadoUpdateView(UpdateView):
 class EmpleadoDeleteView(DeleteView):
     model = Empleado
     template_name = "persona/delete.html"
-    success_url = reverse_lazy('persona_app:correcto')
+    success_url = reverse_lazy('persona_app:empleados_admin')
     
