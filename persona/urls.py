@@ -13,7 +13,10 @@ urlpatterns = [
         views.ListAllEmpleados.as_view(),
         name='empleados_all'
     ),
-    path('lista-by-area/<shorname>/', views.ListByAreaEmpleado.as_view()),
+    path('lista-by-area/<shorname>/',
+          views.ListByAreaEmpleado.as_view(),
+          name='empleados_area'
+          ),
     path('lista-by-trabajo/<job>/', views.ListByTrabajo.as_view()),
     path('buscar-empleado/', views.ListEmpleadosByKword.as_view()),
     path('lista-habilidades-empleado/', views.ListHabilidadesEmpleado.as_view()),
