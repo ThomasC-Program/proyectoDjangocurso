@@ -30,7 +30,10 @@ urlpatterns = [
         views.ListHabilidadesEmpleado.as_view(),
         name='empleado_detail'
         ),
-    path('add-empleado/', views.EmpleadoCreateView.as_view()),
+    path('add-empleado/',
+         views.EmpleadoCreateView.as_view(),
+         name='empleado_add'
+    ),
     path(
         'success/', 
         views.SuccessView.as_view(),

@@ -108,8 +108,9 @@ class EmpleadoCreateView(CreateView):
         'job', 
         'departamento', 
         'habilidades', 
+        'avatar',
         ] #Muestra cajas de texto para todos los campos del modelo
-    success_url = reverse_lazy('persona_app:correcto')
+    success_url = reverse_lazy('persona_app:empleados_admin')
     # Con '.' se le indica a donde debe redirigir al usuario cuando se registra algo
     # Cuando se le pone '.' significa que es al mismo lugar sino colocar '/lista-todo-empleados/'
     #success_url = '.' 

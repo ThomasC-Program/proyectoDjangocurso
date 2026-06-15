@@ -42,6 +42,7 @@ class Empleado(models.Model):
     #(empleado puede pertenecer a un solo departamento)"Departamento" hace referencia al models.py de departamento
     #on_delete CASCADE sirve para decir que si se borra el Departamento debe borrarse los empleados(este CASCADE se puede cambiar)
     #image = models.ImageField( , upload_to=None, height_field=None, width_field=None, max_length=None)
+    avatar = models.ImageField(upload_to='empleado', blank=True, null=True)
     habilidades = models.ManyToManyField(Habilidades) #Funcion de muchos a muchos
     #Un empleado puede tener varia habilidades
     #Varias habilidades pueden pertenecer a varios empleados

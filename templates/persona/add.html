@@ -1,8 +1,55 @@
-<h1>Registrar persona</h1>
+{% extends 'base.html' %}
 
-<!-- Con form se muestra el formulario donde va el texto que difinimo en CreateView -->
-<!-- y con as_p se muestra en parrafos o hacia abajo -->
-<form method="POST">{% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Agregar</button>
-</form>
+
+{% block title %}
+    Registrar Empleado
+{% endblock title %}
+    
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <h1 class="cell">Registrar Empleado</h1>
+        <form class="cell grid-x grid-margin-x" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+            <div class="medium-6 cell">
+                <label>Nombres:
+                    {{form.first_name}}
+                </label>              
+            </div>
+            <div class="medium-6 cell">
+                <label>Apellidos:
+                    {{form.last_name}}
+                </label>              
+            </div>
+            <div class="medium-6 cell">
+                <label>Trabajo:
+                    {{form.job}}
+                </label>             
+            </div>
+            <div class="medium-6 cell">
+                <label>Departamento:
+                    {{form.departamento}}
+                </label>                
+            </div>
+            <div class="medium-6 cell">
+                <label>Habilidades:
+                    {{form.habilidades}}
+                </label>               
+            </div>
+            <div class="medium-6 cell">
+                <label>foto:
+                    {{form.avatar}}
+                </label>               
+            </div>
+            <div class="medium-6 cell">
+                <button type="submit" class="button success">Guardar</button>           
+            </div>
+        </form>
+    </div>
+</div>
+    
+{% endblock content %}
