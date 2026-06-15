@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import FormView # Vista genérica para formularios
 from django.views.generic import ListView
+from django.urls import reverse_lazy
 
 from .forms import NewDepartamentoForm
 from persona.models import Empleado
@@ -15,9 +16,9 @@ class DepartamentoListView(ListView):
 
 class NewDepartamentoView(FormView):
     template_name = 'departamento/new_departamento.html'
-    form_class = NewDepartamentoForm
-    success_url = '/'
-
+    form_class = NewDepartamentoForm    
+    success_url = reverse_lazy('departamento_app:departamento_list')
+    
     def form_valid(self, form):
         
         depa = Departamento(
