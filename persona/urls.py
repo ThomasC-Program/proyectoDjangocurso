@@ -17,7 +17,11 @@ urlpatterns = [
     path('lista-by-trabajo/<job>/', views.ListByTrabajo.as_view()),
     path('buscar-empleado/', views.ListEmpleadosByKword.as_view()),
     path('lista-habilidades-empleado/', views.ListHabilidadesEmpleado.as_view()),
-    path('ver-empleado/<pk>/', views.ListHabilidadesEmpleado.as_view()),
+    path(
+        'ver-empleado/<pk>/', 
+        views.ListHabilidadesEmpleado.as_view(),
+        name='empleado_detail'
+        ),
     path('add-empleado/', views.EmpleadoCreateView.as_view()),
     path(
         'success/', 

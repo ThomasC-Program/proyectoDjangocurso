@@ -19,8 +19,16 @@ class InicioView(TemplateView):
 class ListAllEmpleados(ListView):
     template_name = 'persona/list_all.html'
     paginate_by = 2
-    ordering = 'first_name'
-    model = Empleado 
+    ordering = 'first_name'     
+    
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get("kword", '')
+        # icontains busca palabra clave que coincida con la cadena similitudes
+        lista = Empleado.objects.filter(
+            full_name__icontains=palabra_clave
+        )
+        
+        return lista
 
 class ListByAreaEmpleado(ListView):
     """ lista empleados de un area """
