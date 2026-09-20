@@ -1,0 +1,26 @@
+# Dependencias del proyecto cursoDjango.
+# Instalar con: venv\Scripts\python.exe -m pip install -r requirements.txt
+#
+# Nota sobre el servidor WSGI:
+# - gunicorn: servidor recomendado para produccion / Linux. No corre nativo
+#   en Windows (depende de os.fork). Se deja declarado para cuando el
+#   proyecto se despliegue en Linux.
+# - waitress: servidor WSGI puro Python, si corre en Windows. Es el que se
+#   usa para las pruebas de carga locales en este entorno (ver k6-carga/README.md).
+
+asgiref==3.11.1
+certifi==2026.6.17
+charset-normalizer==3.4.7
+Django==6.0.4
+django-ckeditor-5==0.2.20
+django-js-asset==3.1.2
+gunicorn==26.2.0
+idna==3.18
+pillow==12.2.0
+psycopg2==2.9.11
+python-dotenv==1.2.2
+requests==2.34.2
+sqlparse==0.5.5
+tzdata==2026.1
+urllib3==2.7.0
+waitress==3.0.2
