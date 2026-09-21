@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -136,6 +137,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+# manage.py runserver sirve /static/ automaticamente (comportamiento de
+# desarrollo exclusivo de ese comando). waitress/gunicorn no lo hacen, asi
+# que WhiteNoise se encarga de servirlo tambien ahi. WHITENOISE_USE_FINDERS
+# evita tener que correr "collectstatic": sirve directo desde
+# STATICFILES_DIRS, igual que runserver.
+WHITENOISE_USE_FINDERS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'

@@ -6,7 +6,11 @@
 #   en Windows (depende de os.fork). Se deja declarado para cuando el
 #   proyecto se despliegue en Linux.
 # - waitress: servidor WSGI puro Python, si corre en Windows. Es el que se
-#   usa para las pruebas de carga locales en este entorno (ver k6-carga/README.md).
+#   usa para las pruebas de carga locales en este entorno (ver
+#   playwright-empleados/k6/README.md).
+# - whitenoise: sirve los archivos estaticos (CSS/JS de Foundation) cuando
+#   se usa waitress/gunicorn en vez de "manage.py runserver" (ese comando
+#   los sirve solo, los demas no).
 
 asgiref==3.11.1
 certifi==2026.6.17
@@ -24,3 +28,4 @@ sqlparse==0.5.5
 tzdata==2026.1
 urllib3==2.7.0
 waitress==3.0.2
+whitenoise==6.12.0
